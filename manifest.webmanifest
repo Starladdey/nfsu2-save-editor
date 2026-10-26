@@ -1,0 +1,24 @@
+{
+  "name": "NFSU2 Save Editor — Career Garage & Car Injector",
+  "short_name": "NFSU2 Editor",
+  "description": "Client-side Need for Speed Underground 2 Save Editor, Money Trainer & Multi-Slot Car Injector.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#151a23",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='36' fill='%23151a23'/><rect x='8' y='8' width='176' height='176' rx='30' fill='none' stroke='%23e5b32a' stroke-width='6'/><text x='96' y='112' font-family='Arial,sans-serif' font-weight='900' font-size='44' fill='%23e5b32a' text-anchor='middle'>NFSU2</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='90' fill='%23151a23'/><rect x='20' y='20' width='472' height='472' rx='75' fill='none' stroke='%23e5b32a' stroke-width='16'/><text x='256' y='295' font-family='Arial,sans-serif' font-weight='900' font-size='118' fill='%23e5b32a' text-anchor='middle'>NFSU2</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
