@@ -24,6 +24,7 @@
   --accent-amber-hover: #f0c03e;
   --accent-amber-dim: rgba(229, 179, 42, 0.14);
   --accent-amber-border: rgba(229, 179, 42, 0.38);
+  --accent-amber-dim-hover: rgba(229, 179, 42, 0.24);
 
   --status-inuse-bg: rgba(52, 181, 122, 0.14);
   --status-inuse-text: #4fd195;
@@ -68,6 +69,7 @@
   --accent-amber-hover: #b38106;
   --accent-amber-dim: rgba(201, 147, 12, 0.12);
   --accent-amber-border: rgba(201, 147, 12, 0.38);
+  --accent-amber-dim-hover: rgba(201, 147, 12, 0.22);
 
   --status-inuse-bg: rgba(26, 148, 92, 0.12);
   --status-inuse-text: #16804f;
@@ -111,6 +113,7 @@ html, body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
   max-width: 1920px;
   margin: 0 auto;
   padding: 12px 16px;
@@ -118,10 +121,14 @@ html, body {
 }
 
 .topbar {
+  /* brand | center (2 rows) | actions (2 rows). Every zone has a FIXED size,
+     so nothing moves when ZIP profiles / GARAGE.DAT controls appear. */
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  align-items: center;
-  gap: 16px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: stretch;
+  column-gap: 18px;
+  row-gap: 8px;
   background: var(--bg-panel);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -130,9 +137,31 @@ html, body {
 }
 
 .brand {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.brand-main {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.brand-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-links .privacy-pill {
+  padding: 3px 10px;
 }
 
 .brand-badge {
@@ -159,13 +188,63 @@ html, body {
 }
 
 /* Drag & Drop Zone */
+.topbar-load {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.topbar-status {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
 .drop-zone {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
   border: 1.5px dashed var(--border-strong);
   background: var(--bg-input);
   border-radius: var(--radius-md);
   padding: 7px 14px;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: border-color 0.18s ease, background-color 0.18s ease, padding 0.2s ease;
+}
+
+/* ZIP profile selector floats INSIDE the drop zone's right edge (no layout shift) */
+.select-zip {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 172px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  padding: 5px 28px 5px 10px;
+  z-index: 2;
+}
+
+.topbar-load:has(.select-zip:not(.hidden)) .drop-zone {
+  padding-right: 192px;
+}
+
+/* Reserved elements: .hidden keeps the box (and its size) but fades it out */
+.is-reserved {
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.btn.is-reserved.hidden { display: inline-flex !important; }
+select.is-reserved.hidden { display: block !important; }
+.is-reserved.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .drop-zone:hover,
@@ -178,6 +257,8 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
+  width: 100%;
 }
 
 .drop-icon {
@@ -188,6 +269,12 @@ html, body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.drop-labels small {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .drop-labels strong {
@@ -206,8 +293,11 @@ html, body {
 
 /* Windows Save Path Helper */
 .path-helper {
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   background: var(--bg-input);
   border: 1px solid var(--border-subtle);
@@ -219,6 +309,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
 }
 
 .path-label {
@@ -232,18 +323,46 @@ html, body {
   font-family: var(--font-mono);
   font-size: 11.5px;
   color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Topbar Right Actions */
 .top-actions {
-  display: flex;
-  align-items: center;
+  grid-column: 3;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 112px 168px 184px;   /* fixed: downloads always live in the right column */
+  grid-template-rows: auto auto;
+  grid-template-rows: subgrid;                /* rows line up with the center rows where supported */
   gap: 8px;
+}
+
+.top-actions .btn {
+  width: 100%;
+  height: 100%;
+  min-height: 32px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Download buttons: primary on top, GARAGE.DAT right under it */
+.btn-download::before {
+  content: "\2193";
+  font-weight: 800;
+}
+#btnDownloadSave {
+  font-size: 13.5px;
 }
 
 .integrity-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-width: 132px;
   gap: 6px;
   padding: 5px 11px;
   border-radius: var(--radius-md);
@@ -291,6 +410,8 @@ html, body {
   cursor: pointer;
   user-select: none;
   padding: 0 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .backup-toggle input {
@@ -662,7 +783,7 @@ select:focus {
 }
 
 .btn-amber-outline:hover:not(:disabled) {
-  background: rgba(229, 179, 42, 0.22);
+  background: var(--accent-amber-dim-hover);
 }
 
 .quick-btn-grid {
@@ -1009,7 +1130,7 @@ select:focus {
 }
 
 .seo-faq-drawer summary:hover {
-  background: rgba(229, 179, 42, 0.24);
+  background: var(--accent-amber-dim-hover);
 }
 
 .seo-faq-drawer[open] .seo-faq-content {
@@ -1272,7 +1393,19 @@ select:focus {
   }
   .topbar {
     grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-rows: auto;
+    row-gap: 10px;
+  }
+  .brand,
+  .topbar-load,
+  .topbar-status,
+  .top-actions {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .top-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto;
   }
   .dashboard-grid {
     grid-template-columns: 1fr;
@@ -1311,3 +1444,158 @@ select:focus {
   pointer-events: none;
   z-index: 999;
 }
+
+/* ==========================================================================
+   v1.2 UI POLISH: layout stability, focus, motion, small UX details
+   ========================================================================== */
+
+/* Medium laptops: keep the center column usable by showing only "Copy Path" */
+@media (min-width: 1241px) and (max-width: 1639px) {
+  .path-box { display: none; }
+  .path-helper {
+    flex: 0 0 auto;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+  .topbar-status .integrity-pill { margin-left: auto; }
+}
+
+@media (max-width: 720px) {
+  .app-shell { padding: 8px; gap: 8px; }
+  .topbar { padding: 10px 12px; }
+  .brand { white-space: normal; flex-shrink: 1; min-width: 0; }
+  .brand-text { min-width: 0; }
+  .path-box { display: none; }
+  .path-helper { flex: 0 0 auto; padding: 0; background: none; border: none; }
+  .top-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #btnDownloadSave { order: -2; }
+  #btnDownloadGarageDat { order: -1; }
+  .topbar-status { flex-wrap: wrap; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .app-footer { flex-wrap: wrap; }
+  .footer-legal { flex-wrap: wrap; white-space: normal; }
+  .select-zip { width: 140px; }
+  .topbar-load:has(.select-zip:not(.hidden)) .drop-zone { padding-right: 160px; }
+}
+
+/* ---------- Buttons: specific transitions, press feedback, ready-state glow ---------- */
+.btn {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease,
+              transform 0.12s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.btn:active:not(:disabled) { transform: translateY(0) scale(0.97); }
+.btn-primary:not(:disabled) { box-shadow: 0 4px 14px -5px var(--accent-amber-border); }
+.btn-primary:hover:not(:disabled) { box-shadow: 0 6px 18px -5px var(--accent-amber-border); }
+
+/* ---------- Keyboard focus (was missing everywhere) ---------- */
+:focus-visible { outline: 2px solid var(--accent-amber); outline-offset: 2px; }
+input[type="text"]:focus-visible,
+input[type="number"]:focus-visible,
+select:focus-visible { outline: none; }
+.drop-zone:focus-visible { outline-offset: 3px; }
+.help-tip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ---------- Selects: custom chevron, consistent look ---------- */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 28px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2376849b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+select:hover { border-color: var(--border-strong); }
+.slot-control-item select { padding-right: 28px; }
+.sel-slot-dyno { padding-right: 28px !important; }
+
+/* ---------- Empty state: dashboard is dimmed per-child so the hint stays crisp ---------- */
+.dashboard-grid { position: relative; }
+.dashboard-grid.is-disabled { opacity: 1; }
+.dashboard-grid > * { transition: opacity 0.3s ease, filter 0.3s ease; }
+.dashboard-grid.is-disabled > * { opacity: 0.4; filter: saturate(0.5); }
+.dashboard-grid.is-disabled::after {
+  content: "\2191  Drop a save file above, or click \201CTry Demo\201D";
+  position: absolute;
+  top: min(38%, 220px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 24px);
+  text-align: center;
+  background: var(--bg-panel);
+  border: 1px solid var(--accent-amber-border);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-float);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ---------- Small touches ---------- */
+.card, .topbar, .app-footer { transition: background-color 0.2s ease, border-color 0.2s ease; }
+.slot-card:hover { box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16); }
+.integrity-pill.status-ok .dot { animation: dotPulse 2.4s ease-in-out infinite; }
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--status-inuse-border); }
+  50%      { box-shadow: 0 0 0 4px transparent; }
+}
+.seo-faq-drawer[open] .seo-faq-content { animation: popUp 0.18s ease-out; }
+@keyframes popUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.toast { max-width: min(360px, calc(100vw - 36px)); }
+
+/* Links & footer pills (replaces inline styles) */
+.link-amber { color: var(--accent-amber); text-decoration: none; font-weight: 600; }
+.link-amber:hover { text-decoration: underline; }
+.footer-pills { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+a.privacy-pill { text-decoration: none; cursor: pointer; transition: filter 0.15s ease; }
+a.privacy-pill:hover { filter: brightness(1.2); }
+.privacy-pill.pill-blue { color: #58a6ff; border-color: rgba(88, 166, 255, 0.3); background: rgba(88, 166, 255, 0.1); }
+.privacy-pill.pill-neutral { color: var(--text-secondary); border-color: var(--border-strong); background: var(--bg-card-inner); }
+[data-theme="light"] .privacy-pill.pill-blue { color: #1f5fa8; }
+
+/* Thin scrollbars in Firefox too */
+* { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* FAQ heading + no-JS notice */
+.faq-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.noscript-note {
+  background: var(--accent-amber-dim);
+  border: 1px solid var(--accent-amber-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 12.5px;
+  color: var(--text-primary);
+}
+
+/* Links from FAQ items / footer to guide pages */
+.faq-more { margin-top: 6px; }
+.faq-more a { color: var(--accent-amber); font-weight: 600; font-size: 12px; text-decoration: none; }
+.faq-more a:hover { text-decoration: underline; }
+.privacy-pill.pill-guides { color: var(--accent-amber); border-color: var(--accent-amber-border); background: var(--accent-amber-dim); }
+
+.path-label { white-space: nowrap; }

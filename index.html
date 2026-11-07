@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NFSU2 Save Editor (Web) — Money, Cars &amp; 100% Unlock</title>
-  <meta name="description" content="Free online Need for Speed Underground 2 (NFSU2) Save Editor, Money Trainer &amp; Multi-Slot Garage Tool. Edit career cash, unlock all 5–10 garage slots (including GARAGE.DAT), get Rachel's 350Z &amp; Caleb's GTO, install 9 Outrun Unique parts, widebody kits, and hidden shops with no download required." />
+  <meta name="description" content="Free online NFSU2 save editor: set career money, unlock all garage slots, get unique cars, add Outrun Unique parts. Runs in your browser - no download." />
   <meta name="keywords" content="nfs underground 2 save editor, nfsu2 save editor online, nfsu2 money trainer online, how to get rachel 350z in career mode, nfsu2 100% save game all cars unlocked, nfsu2save file location windows 10 11, nfsu2 unlock all parts widebody kits, nfsu2 outrun unique parts, nfsu2 garage.dat editor" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='36' fill='%23151a23'/><rect x='8' y='8' width='176' height='176' rx='30' fill='none' stroke='%23e5b32a' stroke-width='6'/><text x='96' y='85' font-family='Arial,sans-serif' font-weight='900' font-size='38' fill='%23e5b32a' text-anchor='middle'>NFSU2</text><text x='96' y='140' font-family='Arial,sans-serif' font-weight='900' font-size='42' fill='%23e5b32a' text-anchor='middle'>SE</text></svg>" />
-  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="application-name" content="NFSU2 Save Editor" />
   <link rel="canonical" href="https://nfsu2.divon.eu/" />
   <meta property="og:url" content="https://nfsu2.divon.eu/" />
   <link rel="manifest" href="manifest.webmanifest" />
@@ -16,7 +19,21 @@
   <!-- OpenGraph / Social Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="NFSU2 Save Editor (Web) — Money, Cars, Outrun Uniques &amp; 100% Unlock" />
-  <meta property="og:description" content="Edit NFSU2 career saves in your browser: 5–10 slot garage editor (GARAGE.DAT support), Rachel's 350Z &amp; Boss cars, 9 Outrun Uniques, Dyno presets, hidden shops unlock &amp; 100% sandbox mode." />
+  <meta property="og:description" content="Free online NFSU2 save editor: set career money, unlock all garage slots, get unique cars, add Outrun Unique parts. Runs in your browser - no download." />
+  <meta property="og:site_name" content="NFSU2 Save Editor" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://nfsu2.divon.eu/assets/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="NFSU2 Online Save Editor: tuned car with career cash, garage slots and Outrun Uniques panel" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NFSU2 Save Editor (Web) — Money, Cars, Outrun Uniques &amp; 100% Unlock" />
+  <meta name="twitter:description" content="Free online NFSU2 save editor: set career money, unlock all garage slots, get unique cars, add Outrun Unique parts. Runs in your browser - no download." />
+  <meta name="twitter:image" content="https://nfsu2.divon.eu/assets/og-image.png" />
+  <meta name="twitter:image:alt" content="NFSU2 Online Save Editor: tuned car with career cash, garage slots and Outrun Uniques panel" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,20 +45,77 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
+    "@id": "https://nfsu2.divon.eu/#app",
     "name": "NFSU2 Save Editor",
+    "alternateName": [
+      "NFS Underground 2 Save Editor",
+      "NFSU2 Save Editor Online",
+      "NFSU2 Money Trainer Online"
+    ],
     "url": "https://nfsu2.divon.eu/",
+    "image": "https://nfsu2.divon.eu/assets/og-image.png",
+    "inLanguage": "en",
+    "softwareVersion": "2.0",
     "operatingSystem": "Windows 10, Windows 11, Linux, macOS, Web Browser",
+    "browserRequirements": "Requires JavaScript and a modern web browser (Chrome, Edge, Firefox, Safari).",
     "applicationCategory": "GameApplication",
+    "isAccessibleForFree": true,
+    "description": "Online binary save editor, money trainer, and multi-slot garage manager for Need for Speed Underground 2. Modify career cash, profile name, 5–10 garage slots (including GARAGE.DAT), 9 Outrun Unique upgrades, Dyno curves, hidden shops, and story/sponsor vehicles. Runs 100% locally in your browser; save files are never uploaded.",
+    "featureList": [
+      "Edit career cash (Max Cash $99,999,999) and profile name",
+      "Unlock all 5 career garage slots and edit GARAGE.DAT slots 6-10",
+      "Get Rachel's Nissan 350Z, Caleb's Pontiac GTO and regional exclusive cars",
+      "Install all 9 Outrun Unique performance parts and Stage 3 / Extreme performance",
+      "Dyno curve presets (Power, Drag, Drift) per garage slot",
+      "Unlock hidden shops, Car Lot vehicles and a 100% Stage 5 sandbox",
+      "Import and export custom .json car patches",
+      "Load .zip save archives and edit saves from nfsu2.xyz",
+      "Automatic CRC-32 checksum recalculation and optional .bak backup"
+    ],
+    "about": {
+      "@type": "VideoGame",
+      "name": "Need for Speed: Underground 2",
+      "alternateName": [
+        "NFSU2",
+        "NFS Underground 2"
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Electronic Arts"
+      }
+    },
     "author": {
       "@type": "Person",
       "name": "Starladdey (cybergod_)",
       "url": "https://github.com/Starladdey/nfsu2-save-editor"
     },
-    "description": "Online binary save editor, money trainer, and multi-slot garage manager for Need for Speed Underground 2. Modify career cash, profile name, 5–10 garage slots (including GARAGE.DAT), 9 Outrun Unique upgrades, Dyno curves, hidden shops, and story/sponsor vehicles.",
+    "sameAs": [
+      "https://github.com/Starladdey/nfsu2-save-editor"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org WebSite (helps Google show the right site name) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://nfsu2.divon.eu/#website",
+    "url": "https://nfsu2.divon.eu/",
+    "name": "NFSU2 Save Editor",
+    "alternateName": [
+      "NFS Underground 2 Save Editor",
+      "NFSU2 Save Editor Online"
+    ],
+    "description": "Free online NFSU2 save editor: set career money, unlock all garage slots, get unique cars, add Outrun Unique parts. Runs in your browser - no download.",
+    "inLanguage": "en",
+    "about": {
+      "@id": "https://nfsu2.divon.eu/#app"
     }
   }
   </script>
@@ -100,42 +174,59 @@
 </head>
 <body>
   <div class="app-shell">
+    <noscript>
+      <div class="noscript-note">
+        <strong>NFSU2 Save Editor</strong> is a free online Need for Speed Underground 2 save editor: set career money, unlock all garage slots, get unique cars and add Outrun Unique parts. It runs entirely in your browser and needs JavaScript enabled to work.
+      </div>
+    </noscript>
     <!-- ==================== TOP COMMAND BAR ==================== -->
     <header class="topbar">
       <div class="brand">
-        <div class="brand-badge">NFSU2</div>
+        <div class="brand-main">
+          <div class="brand-badge">NFSU2</div>
         <div class="brand-text">
-          <h1>NFSU2 SAVE EDITOR <span class="v-tag">v1.1</span> • <a href="https://nfsu2.divon.eu" target="_blank" rel="noopener" style="color: #e5b32a; text-decoration: none;">WEB</a></h1>
-          <span class="subtitle">Client-Side Save Editor &amp; Multi-Slot Garage Tool</span>
+          <h1>NFSU2 SAVE EDITOR <span class="v-tag">v2.0</span> • <a href="https://nfsu2.divon.eu" target="_blank" rel="noopener" class="link-amber">WEB</a></h1>
+          <span class="subtitle">Need for Speed Underground 2 · Online Save Editor</span>
+        </div>
+        </div>
+        <div class="brand-links">
+          <a href="https://nfsu2.divon.eu" target="_blank" rel="noopener" class="privacy-pill pill-blue" title="Open official online version">
+            &#127760; nfsu2.divon.eu
+          </a>
+          <a href="https://github.com/Starladdey/nfsu2-save-editor" target="_blank" rel="noopener" class="privacy-pill pill-neutral" title="Source &amp; Releases on GitHub">
+            &#11088; GitHub
+          </a>
         </div>
       </div>
 
-      <!-- Drag & Drop / File Loader -->
-      <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Load Save File">
-        <input type="file" id="fileInput" hidden />
-        <input type="file" id="garageDatInput" accept=".dat,GARAGE.DAT" hidden />
-        <div class="drop-zone-content">
-          <span class="drop-icon">&#128194;</span>
-          <div class="drop-labels">
-            <strong id="loadedFileName">Drop NFSU2 save file or GARAGE.DAT (or click)</strong>
-            <small id="fileStatusSub">Supports standard career saves &amp; GARAGE.DAT </small>
+      <!-- Row 1 (center): Drag & Drop / File Loader + ZIP profile switcher (space is always reserved) -->
+      <div class="topbar-load">
+        <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Load Save File">
+          <input type="file" id="fileInput" hidden />
+          <input type="file" id="garageDatInput" accept=".dat,GARAGE.DAT" hidden />
+          <div class="drop-zone-content">
+            <span class="drop-icon">&#128194;</span>
+            <div class="drop-labels">
+              <strong id="loadedFileName">Drop NFSU2 save file, .ZIP archive, or GARAGE.DAT</strong>
+              <small id="fileStatusSub">Supports career saves, .zip archives &amp; GARAGE.DAT</small>
+            </div>
           </div>
         </div>
+        <select id="zipProfileSelect" class="select-zip is-reserved hidden" title="Switch active profile inside loaded .zip archive" aria-label="Active profile in ZIP archive"></select>
       </div>
 
-      <!-- Windows Save Path Helper -->
-      <div class="path-helper">
-        <div class="path-box" title="Standard Windows Save Location">
-          <span class="path-label">SAVE PATH</span>
-          <code id="winSavePath">%LOCALAPPDATA%\NFS Underground 2</code>
+      <!-- Row 2 (center): Save path, integrity status, auto-backup -->
+      <div class="topbar-status">
+        <div class="path-helper">
+          <div class="path-box" title="Standard Windows Save Location">
+            <span class="path-label">SAVE PATH</span>
+            <code id="winSavePath">%LOCALAPPDATA%\NFS Underground 2</code>
+          </div>
+          <button id="btnCopyPath" class="btn btn-secondary btn-sm" type="button" title="Copy path for Windows Explorer (Win+R)">
+            Copy Path
+          </button>
         </div>
-        <button id="btnCopyPath" class="btn btn-secondary btn-sm" type="button" title="Copy path for Windows Explorer (Win+R)">
-          Copy Path
-        </button>
-      </div>
 
-      <!-- Diagnostics, Theme Toggle & Primary File Actions -->
-      <div class="top-actions">
         <div id="integrityBadge" class="integrity-pill status-idle" title="Save File Integrity &amp; CRC-32 Status">
           <span class="dot"></span>
           <span id="integrityText">NO FILE</span>
@@ -145,32 +236,35 @@
           <input type="checkbox" id="chkAutoBackup" />
           <span>Auto <code>.bak</code></span>
         </label>
+      </div>
 
-        <button id="btnThemeToggle" class="btn btn-ghost btn-sm theme-btn" type="button" title="Switch between Dark and Light mode">
-          <span id="themeIcon">&#9790;</span>
-          <span id="themeLabel">Dark</span>
-        </button>
-
+      <!-- Right: fixed 3x2 action grid. Right column = downloads (always the same size/position) -->
+      <div class="top-actions">
         <button id="btnLoadDemo" class="btn btn-amber-outline btn-sm" type="button" title="Load clean 0% Demo Save to test all features">
           Try Demo
         </button>
         <button id="btnLoadStarter" class="btn btn-amber-outline btn-sm" type="button" title="Load 0% races Starter Save with $999,999, all 5 slots, Stage 3 &amp; 9 Outrun Uniques unlocked">
-           Starter 0% + Unlocked
+          Starter 0% + Unlocked
         </button>
+        <button id="btnDownloadSave" class="btn btn-primary btn-sm btn-download" type="button" disabled>
+          Download Save
+        </button>
+
         <button id="btnResetSave" class="btn btn-ghost btn-sm" type="button" disabled>
           Reset
         </button>
-        <button id="btnDownloadGarageDat" class="btn btn-secondary btn-sm hidden" type="button" title="Download modified GARAGE.DAT (Slots 6–10)">
-          Download GARAGE.DAT
+        <button id="btnThemeToggle" class="btn btn-ghost btn-sm theme-btn" type="button" title="Switch between Dark and Light mode">
+          <span id="themeIcon">&#9790;</span>
+          <span id="themeLabel">Dark</span>
         </button>
-        <button id="btnDownloadSave" class="btn btn-primary btn-sm" type="button" disabled>
-          Download Save
+        <button id="btnDownloadGarageDat" class="btn btn-secondary btn-sm btn-download is-reserved hidden" type="button" title="Download modified GARAGE.DAT (Slots 6–10)">
+          Download GARAGE.DAT
         </button>
       </div>
     </header>
 
     <!-- ==================== MAIN 3-COLUMN DASHBOARD GRID ==================== -->
-    <main id="dashboardMain" class="dashboard-grid is-disabled">
+    <main id="dashboardMain" class="dashboard-grid is-disabled" aria-label="NFSU2 save editor workspace">
       
       <!-- COLUMN 1: PROFILE, BANK & LIVE SAVE OVERVIEW -->
       <section class="panel-col col-left">
@@ -181,7 +275,7 @@
             <div class="header-title-row">
               <h2>Profile &amp; Bank</h2>
             </div>
-            <span class="help-tip" data-tooltip="Safely edits your 7-character ASCII profile name and career cash balance without affecting active career races.">?</span>
+            <span class="help-tip" tabindex="0" data-tooltip="Safely edits your 7-character ASCII profile name and career cash balance without affecting active career races.">?</span>
           </div>
           <div class="card-body">
             <!-- Safe Profile Rename -->
@@ -242,7 +336,7 @@
               <h2>Save File Overview</h2>
               <span id="stageReadOnlyBadge" class="mode-pill pill-sandbox">STAGE 1</span>
             </div>
-            <span class="help-tip" data-tooltip="Real-time telemetry read directly from your loaded save file: overall career completion, occupied garage slots, unlocked Car Lot vehicles, and discovered map shops.">?</span>
+            <span class="help-tip" tabindex="0" data-tooltip="Real-time telemetry read directly from your loaded save file: overall career completion, occupied garage slots, unlocked Car Lot vehicles, and discovered map shops.">?</span>
           </div>
           <div class="card-body overview-body">
             <div class="stats-overview-grid">
@@ -306,7 +400,7 @@
               <button id="btnUnlockAllSlots" class="btn btn-secondary btn-sm" type="button" title="Unlocks all 5 career garage slots on any save">
                 Enable All 5 Slots
               </button>
-              <span class="help-tip" data-tooltip="Manage 5 career vehicles (or Slots 6–10 via GARAGE.DAT). Toggle all 9 Outrun Uniques per car, apply conflict-free Stage 3 tuning, set Dyno ECU/Turbo curves, or inject 40+ presets.">?</span>
+              <span class="help-tip" tabindex="0" data-tooltip="Manage 5 career vehicles (or Slots 6–10 via GARAGE.DAT). Toggle all 9 Outrun Uniques per car, apply conflict-free Stage 3 tuning, set Dyno ECU/Turbo curves, or inject 40+ presets.">?</span>
             </div>
           </div>
 
@@ -328,7 +422,7 @@
               <h2>Safe Career Add-ons</h2>
               <span class="mode-pill pill-safe">KEEPS RACES</span>
             </div>
-            <span class="help-tip" data-tooltip="Unlocks all 420-byte per-car part tables (Body, Vinyls, Specialties), 25 Car Lot vehicles, and hidden map shops while keeping your active storyline races intact.">?</span>
+            <span class="help-tip" tabindex="0" data-tooltip="Unlocks all 420-byte per-car part tables (Body, Vinyls, Specialties), 25 Car Lot vehicles, and hidden map shops while keeping your active storyline races intact.">?</span>
           </div>
           <div class="card-body">
             <p class="panel-intro">
@@ -340,8 +434,8 @@
                 <span class="cat-sub">Body, Hoods &amp; Vinyls</span>
               </button>
               <button type="button" class="btn btn-unlock-cat" data-unlock-cat="CAR_LOT_ALL">
-                <span class="cat-name">Car Lot (25 Cars)</span>
-                <span class="cat-sub">All Vehicles in Lot</span>
+                <span class="cat-name">Car Lots</span>
+                <span class="cat-sub">Unlock Catalog Table</span>
               </button>
               <button type="button" class="btn btn-unlock-cat" data-unlock-cat="HIDDEN_SHOPS">
                 <span class="cat-name">Reveal Shops</span>
@@ -366,7 +460,7 @@
               <h2>100% Sandbox Mode</h2>
               <span class="mode-pill pill-sandbox">ALL 5 SLOTS</span>
             </div>
-            <span class="help-tip" data-tooltip="Applies the verified 100% completed career progression state (Stage 5, all 5 sponsor garage slots, full city map, and 100% of shop parts) while keeping your profile name, cash, and existing garage cars.">?</span>
+            <span class="help-tip" tabindex="0" data-tooltip="Applies the verified 100% completed career progression state (Stage 5, all 5 sponsor garage slots, full city map, and 100% of shop parts) while keeping your profile name, cash, and existing garage cars.">?</span>
           </div>
           <div class="card-body sandbox-body">
             <div class="sandbox-feature-list">
@@ -398,36 +492,35 @@
     <footer class="app-footer">
       <div class="footer-legal">
         <span>
-          <strong>UNOFFICIAL FAN PROJECT:</strong> Created by <a href="https://github.com/Starladdey/nfsu2-save-editor" target="_blank" rel="noopener" style="color: #e5b32a; text-decoration: none; font-weight: 600;">Starladdey (cybergod_)</a>. Non-commercial community utility. Not affiliated with Electronic Arts Inc. (EA).
+          <strong>UNOFFICIAL FAN PROJECT:</strong> Created by <a href="https://github.com/Starladdey/nfsu2-save-editor" target="_blank" rel="noopener" class="link-amber">Starladdey (cybergod_)</a>. Non-commercial community utility. Not affiliated with Electronic Arts Inc. (EA).
         </span>
-        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-          <a href="https://nfsu2.divon.eu" target="_blank" rel="noopener" class="privacy-pill" style="text-decoration: none; color: #58a6ff; border-color: rgba(88,166,255,0.3); cursor: pointer;" title="Open official online version">
-            &#127760; nfsu2.divon.eu
-          </a>
-          <a href="https://github.com/Starladdey/nfsu2-save-editor" target="_blank" rel="noopener" class="privacy-pill" style="text-decoration: none; color: #c9d1d9; cursor: pointer;" title="Source &amp; Releases on GitHub">
-            &#11088; GitHub
-          </a>
+        <div class="footer-pills">
           <span class="privacy-pill" title="Save files are parsed and edited 100% locally in your browser RAM and never uploaded to any server">
             &#128274; 100% Local Save Processing
           </span>
+          <a href="guides/" class="privacy-pill pill-guides">&#128218; Guides</a>
         </div>
       </div>
 
       <details class="seo-faq-drawer">
         <summary>Quick Guide &amp; FAQ</summary>
         <div class="seo-faq-content">
+          <h2 class="faq-title">Need for Speed Underground 2 Save Editor — Quick Guide &amp; FAQ</h2>
           <div class="faq-grid">
             <article class="faq-col">
               <h3>1. NFS Underground 2 Save File Location (Windows 10 / 11)</h3>
               <p>Need for Speed Underground 2 career save files are stored in <code>%LOCALAPPDATA%\NFS Underground 2</code> (or <code>C:\Users\&lt;Username&gt;\AppData\Local\NFS Underground 2</code>). Click <strong>Copy Path</strong> in the top bar, press <strong>Win + R</strong>, paste the path, and open your profile subfolder.</p>
+            <p class="faq-more"><a href="guides/nfsu2-save-file-location/">Read the save file location guide &rarr;</a></p>
             </article>
             <article class="faq-col">
               <h3>2. How to Get Rachel's 350Z &amp; Caleb's GTO in Career Mode</h3>
               <p>Normally, Rachel's green Nissan 350Z is only drivable in the prologue and Caleb's Pontiac GTO is unobtainable. Select any garage slot and choose <strong>Rachel's Nissan 350Z</strong> or <strong>Caleb's Pontiac GTO (Final Boss)</strong> from the preset menu to own and drive them permanently in Career Mode.</p>
+            <p class="faq-more"><a href="guides/rachel-350z-nfsu2/">Read the Rachel's 350Z &amp; Caleb's GTO guide &rarr;</a></p>
             </article>
             <article class="faq-col">
               <h3>3. NFSU2 Money Trainer Online (Unlimited Career Cash)</h3>
               <p>No need to download risky <code>.exe</code> memory trainers or Cheat Engine tables. Load your career save file in the browser, click <strong>Max Cash</strong> ($99,999,999) or type any custom bank balance, and download your updated save file instantly.</p>
+            <p class="faq-more"><a href="guides/nfsu2-money-trainer/">Read the money trainer guide &rarr;</a></p>
             </article>
             <article class="faq-col">
               <h3>4. Safe Career Add-ons vs. 100% Save Game Unlock</h3>
@@ -436,10 +529,12 @@
             <article class="faq-col">
               <h3>5. How Outrun Unique Parts &amp; Widebody Kits Work</h3>
               <p>In Career mode, TJ's 9 Outrun Unique performance upgrades (<code>WT, TR, NO, EN, TU, SU, BR, EC, TI</code>) and Widebody kits are stored <strong>inside each vehicle slot</strong> rather than on permanent shop shelves. Use the <strong>&#127942; Outrun Uniques</strong> toggles inside any slot card to install all 9 Uniques directly onto your car!</p>
+            <p class="faq-more"><a href="guides/nfsu2-outrun-unique-parts/">Read the Outrun Unique parts guide &rarr;</a></p>
             </article>
             <article class="faq-col">
               <h3>6. How to Unlock All 5 Garage Slots in Career Mode</h3>
               <p>Click <strong>Enable All 5 Slots</strong> in the Career Garage header. In v1.1, this clears the per-slot lock byte (<code>+0x428</code>), copies valid slot headers, and updates the global garage counter (<code>0xA175</code>) so all 5 slots work immediately even on Stage 1 saves.</p>
+            <p class="faq-more"><a href="guides/nfsu2-garage-dat-editor/">Read the GARAGE.DAT &amp; garage slots guide &rarr;</a></p>
             </article>
             <article class="faq-col">
               <h3>7. Per-Slot Dyno Curve Presets (Power / Drag / Drift)</h3>
@@ -461,6 +556,7 @@
             <article class="faq-col">
               <h3>11. NFS Underground 2 PC Cheat Codes (Title Screen)</h3>
               <p>Type these codes at the <strong>"Press Enter"</strong> title screen before loading your profile: <code>regmebaby</code> ($20,000 starter cash in career), <code>ordermebaby</code> ($1,000 in career + unlocks Skyline/RX-8 in Quick Race), <code>opendoors</code> (unlocks all city areas), <code>gimmevisual1</code> &amp; <code>gimmevisual2</code> (visual upgrades), <code>needperformance1</code> &amp; <code>needperformance2</code> (performance tiers).</p>
+            <p class="faq-more"><a href="guides/nfsu2-cheat-codes-pc/">Read the PC cheat codes list &rarr;</a></p>
             </article>
             <article class="faq-col">
               <h3>12. Automatic Header CRC-32 Recalculation</h3>

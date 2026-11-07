@@ -2,8 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nfsu2.divon.eu/</loc>
-    <lastmod>2026-11-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://nfsu2.divon.eu/guides/</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://nfsu2.divon.eu/guides/nfsu2-save-file-location/</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://nfsu2.divon.eu/guides/nfsu2-money-trainer/</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://nfsu2.divon.eu/guides/rachel-350z-nfsu2/</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://nfsu2.divon.eu/guides/nfsu2-outrun-unique-parts/</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://nfsu2.divon.eu/guides/nfsu2-garage-dat-editor/</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://nfsu2.divon.eu/guides/nfsu2-cheat-codes-pc/</loc>
+    <lastmod>2026-11-07</lastmod>
   </url>
 </urlset>
