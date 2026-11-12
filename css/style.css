@@ -1599,3 +1599,97 @@ a.privacy-pill:hover { filter: brightness(1.2); }
 .privacy-pill.pill-guides { color: var(--accent-amber); border-color: var(--accent-amber-border); background: var(--accent-amber-dim); }
 
 .path-label { white-space: nowrap; }
+
+/* download summary */
+.summary-dialog {
+  margin: auto;
+  max-width: 560px;
+  width: calc(100% - 32px);
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-panel);
+  color: inherit;
+}
+.summary-dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
+.summary-form { padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+.summary-form h2 { margin: 0 0 4px; font-size: 18px; }
+.summary-sub { margin: 6px 0 0; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.summary-list, .summary-files { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; max-height: 40vh; overflow-y: auto; }
+.summary-files code { color: var(--accent-amber); }
+.summary-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+
+/* toast: click to close */
+.toast { cursor: pointer; pointer-events: auto; }
+
+/* help tips / pills as buttons */
+button.help-tip { padding: 0; font-family: inherit; line-height: 1; }
+button.u-pill { line-height: 1.4; }
+button.u-pill:disabled { cursor: not-allowed; }
+.brand-text h1 .subtitle { display: block; font-weight: 400; letter-spacing: 0; margin-top: 2px; }
+
+/* cards: no x-scroll, stat rows */
+.card-body { overflow-x: hidden; }
+.unlock-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.btn-unlock-cat { min-width: 0; white-space: normal; }
+.btn-unlock-cat .cat-name,
+.btn-unlock-cat .cat-sub { white-space: normal; overflow-wrap: anywhere; line-height: 1.25; }
+.stage-summary-row { gap: 12px; }
+.stage-summary-row > span { min-width: 0; }
+.stage-summary-row strong { text-align: right; white-space: nowrap; }
+
+/* slot card: 3 selects, buttons below */
+.slot-controls-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.slot-control-item { min-width: 0; }
+.slot-control-item select { width: 100%; min-width: 0; text-overflow: ellipsis; }
+.slot-patch-actions { grid-column: 1 / -1; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 1240px) {
+  .dashboard-grid { grid-template-columns: minmax(0, 1fr); }
+  .panel-col, .card, .card-body { min-width: 0; }
+}
+@media (max-width: 720px) {
+  .slot-controls-row { grid-template-columns: minmax(0, 1fr); }
+  .slot-patch-actions { flex-wrap: wrap; }
+  .quick-btn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .unlock-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* touch targets */
+  .btn, select, input[type="text"], input[type="number"] { min-height: 40px; }
+  .btn-xs { min-height: 36px; }
+  .u-pill { min-height: 32px; min-width: 40px; }
+  .help-tip { width: 28px; height: 28px; }
+  .g-tab { min-height: 36px; }
+  .backup-toggle input { width: 20px; height: 20px; }
+  .stage-summary-row strong { white-space: normal; }
+}
+
+/* short laptops: page scrolls, not cards */
+@media (min-width: 1241px) and (max-height: 820px) {
+  html, body { overflow: auto; }
+  .app-shell { height: auto; min-height: 100vh; }
+  .dashboard-grid { min-height: auto; flex: none; }
+  .panel-col, .card.flex-fill, .card.full-height { min-height: auto; }
+  .card.flex-fill, .card.full-height { flex: 0 0 auto; }
+  .card-body { overflow-y: visible; }
+}
+
+/* full-width grid item */
+.unlock-grid .unlock-wide { grid-column: 1 / -1; }
+
+/* 100% button, second click */
+.btn-primary.btn-confirm-armed,
+.btn-primary.btn-confirm-armed:hover:not(:disabled) { background: var(--status-inuse-text); color: #0d1a13; }
+
+/* progress by stage */
+.stage-progress { margin-top: 10px; background: var(--bg-card-inner); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: 12px; color: var(--text-secondary); }
+.stage-progress > summary { cursor: pointer; padding: 9px 13px; font-weight: 600; color: var(--text-primary); }
+.stage-progress[open] > summary { border-bottom: 1px solid var(--border-subtle); }
+.stage-progress-list { display: flex; flex-direction: column; gap: 8px; padding: 10px 13px; }
+.stage-progress-row { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sp-head { display: flex; justify-content: space-between; gap: 8px; color: var(--text-primary); }
+.sp-figures { font-family: var(--font-mono); overflow-wrap: anywhere; }
+.sp-mark { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent-amber); }
+.stage-progress-row.done .sp-mark { color: var(--status-inuse-text); }
+.sp-note { color: var(--text-muted); font-size: 11px; }

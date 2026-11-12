@@ -39,7 +39,7 @@
     "description": "Unlock all 5 career garage slots and edit extended GARAGE.DAT slots 6–10 for NFS Underground 2 in your browser. Works with nfsu2.xyz exports.",
     "image": "https://nfsu2.divon.eu/assets/og-image.png",
     "datePublished": "2026-11-07",
-    "dateModified": "2026-11-07",
+    "dateModified": "2026-11-12",
     "inLanguage": "en",
     "author": {
       "@type": "Person",
@@ -108,7 +108,7 @@
         "name": "Does Enable All 5 Slots work on a new save?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. It updates the lock flags and the global garage counter, so all five slots work immediately even on Stage 1 saves."
+          "text": "Yes. It clears the lock byte of each locked career slot, the same change the game makes when you earn a slot, so all five slots work even on a Stage 1 save. Your career stage and races are not changed."
         }
       },
       {
@@ -116,7 +116,7 @@
         "name": "Which files do I download after editing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Download Save for the main career file and Download GARAGE.DAT for slots 6 to 10. Only the files you changed need to be replaced."
+          "text": "Click Download Save. If you loaded a .zip archive, you get one edited .zip. If you loaded the save and GARAGE.DAT separately, you get the save, plus GARAGE.DAT whenever slots 6 to 10 changed or it had to be re-linked to the edited save. Replace both files in the profile folder."
         }
       },
       {
@@ -124,7 +124,7 @@
         "name": "Can I edit saves exported from nfsu2.xyz?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Drop the exported save (or the .zip archive) into the editor, edit it, then use Restore on nfsu2.xyz to import the edited file back."
+          "text": "Yes. Drop the whole .zip backup from nfsu2.xyz into the editor, pick the profile, edit it and download the .zip, then restore that .zip on nfsu2.xyz. Slots 6 to 10 come back only from the archive, where GARAGE.DAT sits in the profile folder."
         }
       }
     ]
@@ -153,7 +153,7 @@
 
     <main id="main"><article class="article">
       <h1>NFSU2 GARAGE.DAT Editor — Unlock All 5 Slots and Edit Slots 6–10</h1>
-      <p class="meta">Updated <time datetime="2026-11-07">November 7, 2026</time> · by Starladdey</p>
+      <p class="meta">Updated <time datetime="2026-11-12">November 12, 2026</time> · by Starladdey</p>
       <p class="lead">The Need for Speed Underground 2 career garage has five sponsor slots, and extended 10-car garages keep slots 6 to 10 in a separate GARAGE.DAT file. The online editor handles both, right in your browser.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="/">Open the NFSU2 Save Editor</a>
@@ -161,25 +161,25 @@
       </div>
 
       <h2>Unlock all 5 career garage slots</h2>
-<p>Click <strong>Enable All 5 Slots</strong> in the Career Garage header. In v1.1 this clears the per-slot lock byte (<code>+0x428</code>), copies valid slot headers and updates the global garage counter (<code>0xA175</code>), so all five slots work immediately, even on a Stage 1 save.</p>
+<p>Click <strong>Enable All 5 Slots</strong> in the Career Garage header. It clears the lock byte (<code>+0x428</code>) of each locked slot, the same change the game makes when you earn a slot, so all five slots work even on a Stage 1 save. Your career stage and races are not changed.</p>
 
       <h2>Edit extended slots 6–10 (GARAGE.DAT)</h2>
 <ol class="steps">
   <li>Open the <a href="/">NFSU2 Save Editor</a>.</li>
-  <li>Switch the garage panel to the <strong>GARAGE.DAT (6–10)</strong> tab and load your <code>GARAGE.DAT</code> file.</li>
+  <li>Load your career save first, then switch the garage panel to the <strong>GARAGE.DAT (6–10)</strong> tab and load the <code>GARAGE.DAT</code> from the same profile folder. Using nfsu2.xyz? Load the whole <code>.zip</code> backup instead: both files come with it.</li>
   <li>Edit the cars in slots 6&ndash;10 just like the regular slots: presets, Outrun Uniques, Dyno presets and <code>.json</code> import or export.</li>
-  <li>Click <strong>Download GARAGE.DAT</strong> in the top bar and replace the original file.</li>
+  <li>Click <strong>Download Save</strong>. You get the save and, when slots 6&ndash;10 changed, <code>GARAGE.DAT</code> as well (or one edited <code>.zip</code> if you loaded a <code>.zip</code>). Replace the files in your profile folder.</li>
 </ol>
-<p>The main career save and <code>GARAGE.DAT</code> are separate files, so if you changed both, download both. <code>GARAGE.DAT</code> files for slots 6&ndash;10 are used by nfsu2.xyz and the Extra Options mod.</p>
+<p><code>GARAGE.DAT</code> stores a fingerprint of the career save, so the editor re-links it to your edited save and downloads both whenever needed. <code>GARAGE.DAT</code> files for slots 6&ndash;10 are used by nfsu2.xyz and the Extra Options mod.</p>
 
       <h2>Using saves from nfsu2.xyz</h2>
-<p><strong>Export from nfsu2.xyz:</strong> download your save archive (<code>.zip</code>), open <code>NFS Underground 2</code> &rarr; your profile folder, and drop the file matching your profile name into the editor. For slots 6&ndash;10, use the GARAGE.DAT tab and load <code>GARAGE.DAT</code>.</p>
-<p><strong>Import back to nfsu2.xyz:</strong> click <strong>Restore</strong>, select your edited save file (or <code>GARAGE.DAT</code>) and confirm the replacement.</p>
+<p><strong>Export from nfsu2.xyz:</strong> in <strong>Saves</strong>, download a backup (<code>.zip</code>) and drop the whole <code>.zip</code> into the editor. Choose your profile in the list; its <code>GARAGE.DAT</code> (slots 6&ndash;10) loads with it.</p>
+<p><strong>Import back to nfsu2.xyz:</strong> click <strong>Download Save</strong> to get a <code>.zip</code> with only the profiles you edited, then restore that <code>.zip</code> on nfsu2.xyz. Your other profiles and nfsu2.xyz settings stay as they are. <code>GARAGE.DAT</code> is restored only from the archive, inside the profile folder.</p>
 <p>Not sure where your local save is? See the <a href="/guides/nfsu2-save-file-location/">save file location guide</a>.</p>
 
 
       <h2>Frequently asked questions</h2>
-      <div class="faq-list"><details class="faq-q"><summary>Does Enable All 5 Slots work on a new save?</summary><p>Yes. It updates the lock flags and the global garage counter, so all five slots work immediately even on Stage 1 saves.</p></details><details class="faq-q"><summary>Which files do I download after editing?</summary><p>Download Save for the main career file and Download GARAGE.DAT for slots 6 to 10. Only the files you changed need to be replaced.</p></details><details class="faq-q"><summary>Can I edit saves exported from nfsu2.xyz?</summary><p>Yes. Drop the exported save (or the .zip archive) into the editor, edit it, then use Restore on nfsu2.xyz to import the edited file back.</p></details></div>
+      <div class="faq-list"><details class="faq-q"><summary>Does Enable All 5 Slots work on a new save?</summary><p>Yes. It clears the lock byte of each locked career slot, the same change the game makes when you earn a slot, so all five slots work even on a Stage 1 save. Your career stage and races are not changed.</p></details><details class="faq-q"><summary>Which files do I download after editing?</summary><p>Click Download Save. If you loaded a .zip archive, you get one edited .zip. If you loaded the save and GARAGE.DAT separately, you get the save, plus GARAGE.DAT whenever slots 6 to 10 changed or it had to be re-linked to the edited save. Replace both files in the profile folder.</p></details><details class="faq-q"><summary>Can I edit saves exported from nfsu2.xyz?</summary><p>Yes. Drop the whole .zip backup from nfsu2.xyz into the editor, pick the profile, edit it and download the .zip, then restore that .zip on nfsu2.xyz. Slots 6 to 10 come back only from the archive, where GARAGE.DAT sits in the profile folder.</p></details></div>
 
       <h2>Related guides</h2>
       <div class="related-grid"><a class="guide-card" href="/guides/rachel-350z-nfsu2/"><span class="gc-title">Rachel&#x27;s 350Z &amp; Caleb&#x27;s GTO</span><span class="gc-sub">Put Rachel&#x27;s Nissan 350Z, Caleb&#x27;s GTO and EU/US exclusives into any garage slot.</span></a><a class="guide-card" href="/guides/nfsu2-outrun-unique-parts/"><span class="gc-title">Outrun Unique parts</span><span class="gc-sub">Install all 9 Outrun Uniques, Stage 3 Extreme performance and Dyno presets per car.</span></a><a class="guide-card" href="/guides/nfsu2-save-file-location/"><span class="gc-title">Save file location</span><span class="gc-sub">Where NFSU2 stores career saves on Windows 10 / 11, and how to open the folder in seconds.</span></a></div>

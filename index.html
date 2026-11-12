@@ -55,19 +55,19 @@
     "url": "https://nfsu2.divon.eu/",
     "image": "https://nfsu2.divon.eu/assets/og-image.png",
     "inLanguage": "en",
-    "softwareVersion": "2.0",
+    "softwareVersion": "3.0",
     "operatingSystem": "Windows 10, Windows 11, Linux, macOS, Web Browser",
     "browserRequirements": "Requires JavaScript and a modern web browser (Chrome, Edge, Firefox, Safari).",
     "applicationCategory": "GameApplication",
     "isAccessibleForFree": true,
-    "description": "Online binary save editor, money trainer, and multi-slot garage manager for Need for Speed Underground 2. Modify career cash, profile name, 5–10 garage slots (including GARAGE.DAT), 9 Outrun Unique upgrades, Dyno curves, hidden shops, and story/sponsor vehicles. Runs 100% locally in your browser; save files are never uploaded.",
+    "description": "Online binary save editor, money trainer, and multi-slot garage manager for Need for Speed Underground 2. Modify career cash, profile name, 5–10 garage slots (including GARAGE.DAT), 9 Outrun Unique upgrades, Dyno curves, shop discovery, and story/sponsor vehicles. Runs 100% locally in your browser; save files are never uploaded.",
     "featureList": [
       "Edit career cash (Max Cash $99,999,999) and profile name",
       "Unlock all 5 career garage slots and edit GARAGE.DAT slots 6-10",
       "Get Rachel's Nissan 350Z, Caleb's Pontiac GTO and regional exclusive cars",
       "Install all 9 Outrun Unique performance parts and Stage 3 / Extreme performance",
       "Dyno curve presets (Power, Drag, Drift) per garage slot",
-      "Unlock hidden shops, Car Lot vehicles and a 100% Stage 5 sandbox",
+      "100% career (stage 6) merged into your own save, plus shop discovery by career stage",
       "Import and export custom .json car patches",
       "Load .zip save archives and edit saves from nfsu2.xyz",
       "Automatic CRC-32 checksum recalculation and optional .bak backup"
@@ -147,7 +147,7 @@
         "name": "How to install all 9 Outrun Unique performance parts and Stage 3 upgrades in NFSU2?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Inside each garage slot card, use the Outrun Uniques bar (WT, TR, NO, EN, TU, SU, BR, EC, TI) or click +All 9 to install all 9 Outrun Unique upgrades directly onto your car, and select Perf: Extreme (Level 3 Max) for conflict-free Stage 3 performance."
+          "text": "Inside each garage slot card, use the Outrun Uniques bar (Weight, Trans, NOS, Engine, Turbo, Susp, Brakes, ECU, Tires) or click +All 9 to install all 9 Outrun Unique upgrades directly onto your car, and select Perf: Extreme (Level 3 Max) for conflict-free Stage 3 performance."
         }
       },
       {
@@ -185,8 +185,8 @@
         <div class="brand-main">
           <div class="brand-badge">NFSU2</div>
         <div class="brand-text">
-          <h1>NFSU2 SAVE EDITOR <span class="v-tag">v2.0</span> • <a href="https://nfsu2.divon.eu" target="_blank" rel="noopener" class="link-amber">WEB</a></h1>
-          <span class="subtitle">Need for Speed Underground 2 · Online Save Editor</span>
+          <h1>NFSU2 SAVE EDITOR <span class="v-tag">v3.0</span> • <a href="https://nfsu2.divon.eu" target="_blank" rel="noopener" class="link-amber">WEB</a>
+            <span class="subtitle">Need for Speed Underground 2 · Online Save Editor</span></h1>
         </div>
         </div>
         <div class="brand-links">
@@ -232,7 +232,7 @@
           <span id="integrityText">NO FILE</span>
         </div>
 
-        <label class="backup-toggle" title="Automatically download an untouched .bak backup copy when saving">
+        <label class="backup-toggle" title="Also download an untouched .bak copy of the loaded file (off by default: the file you loaded is not changed, so it already is your backup)">
           <input type="checkbox" id="chkAutoBackup" />
           <span>Auto <code>.bak</code></span>
         </label>
@@ -240,11 +240,14 @@
 
       <!-- Right: fixed 3x2 action grid. Right column = downloads (always the same size/position) -->
       <div class="top-actions">
-        <button id="btnLoadDemo" class="btn btn-amber-outline btn-sm" type="button" title="Load clean 0% Demo Save to test all features">
+        <button id="btnLoadDemo" class="btn btn-amber-outline btn-sm" type="button" title="Load a demo save (early career, stage 1) to try every feature">
           Try Demo
         </button>
-        <button id="btnLoadStarter" class="btn btn-amber-outline btn-sm" type="button" title="Load 0% races Starter Save with $999,999, all 5 slots, Stage 3 &amp; 9 Outrun Uniques unlocked">
-          Starter 0% + Unlocked
+        <button id="btnLoadStarter" class="btn btn-amber-outline btn-sm hidden" type="button" hidden title="Removed in v3.0 (use Try Demo + Safe Career Add-ons)">
+          Starter
+        </button>
+        <button id="btnUndo" class="btn btn-ghost btn-sm" type="button" disabled title="Undo the last change (Ctrl+Z)" aria-label="Undo the last change">
+          &#8630; Undo
         </button>
         <button id="btnDownloadSave" class="btn btn-primary btn-sm btn-download" type="button" disabled>
           Download Save
@@ -275,7 +278,7 @@
             <div class="header-title-row">
               <h2>Profile &amp; Bank</h2>
             </div>
-            <span class="help-tip" tabindex="0" data-tooltip="Safely edits your 7-character ASCII profile name and career cash balance without affecting active career races.">?</span>
+            <button type="button" class="help-tip" data-tooltip="Safely edits your 7-character ASCII profile name and career cash balance without affecting active career races." aria-label="Help: Safely edits your 7-character ASCII profile name and career cash balance without affecting active career races.">?</button>
           </div>
           <div class="card-body">
             <!-- Safe Profile Rename -->
@@ -336,42 +339,55 @@
               <h2>Save File Overview</h2>
               <span id="stageReadOnlyBadge" class="mode-pill pill-sandbox">STAGE 1</span>
             </div>
-            <span class="help-tip" tabindex="0" data-tooltip="Real-time telemetry read directly from your loaded save file: overall career completion, occupied garage slots, unlocked Car Lot vehicles, and discovered map shops.">?</span>
+            <button type="button" class="help-tip" data-tooltip="Read from your save with the game's own career tables: completion = main career events won out of 224 (same formula as the in-game statistics screen), garage cars, dealer cars unlocked by career progress, and standard shops discovered." aria-label="Help: Read from your save with the game's own career tables: completion = main career events won out of 224 (same formula as the in-game statistics screen), garage cars, dealer cars unlocked by career progress, and standard shops discovered.">?</button>
           </div>
           <div class="card-body overview-body">
             <div class="stats-overview-grid">
               <div class="stat-box">
                 <span class="stat-title">Completion</span>
-                <strong id="statCompletionPct" class="stat-val">0%</strong>
+                <strong id="statCompletionPct" class="stat-val">—</strong>
               </div>
               <div class="stat-box">
                 <span class="stat-title">Garage Cars</span>
                 <strong id="statGarageCars" class="stat-val">0 / 5</strong>
               </div>
               <div class="stat-box">
-                <span class="stat-title">Car Lot Unlocked</span>
-                <strong id="statCarLot" class="stat-val">0 / 25</strong>
+                <span class="stat-title">Dealer Cars</span>
+                <strong id="statCarLot" class="stat-val">—</strong>
               </div>
               <div class="stat-box">
-                <span class="stat-title">Map Shops Found</span>
-                <strong id="statShopsFound" class="stat-val">0%</strong>
+                <span class="stat-title">Shops Found</span>
+                <strong id="statShopsFound" class="stat-val">—</strong>
               </div>
             </div>
 
             <div class="stage-summary-box">
               <div class="stage-summary-row">
-                <span>Active Career Stage</span>
-                <strong id="statStageName">Stage 1 — City Center</strong>
+                <span>Career Stage</span>
+                <strong id="statStageName">—</strong>
               </div>
               <div class="stage-summary-row">
-                <span>Logged Career Events / SMS</span>
-                <strong id="statEventsCount">0</strong>
+                <span>Stages Completed</span>
+                <strong id="statStagesDone">—</strong>
+              </div>
+              <div class="stage-summary-row">
+                <span>Main Events Won</span>
+                <strong id="statEventsCount">—</strong>
+              </div>
+              <div class="stage-summary-row">
+                <span>Photo Goals</span>
+                <strong id="statPhotos">—</strong>
               </div>
               <div class="stage-summary-row">
                 <span>Unlocked Sponsor Slots</span>
                 <strong id="statUnlockedSlots">1 / 5</strong>
               </div>
             </div>
+
+            <details class="stage-progress" id="stageProgressDetails">
+              <summary>Progress by stage</summary>
+              <div id="stageProgressList" class="stage-progress-list"></div>
+            </details>
           </div>
         </div>
 
@@ -400,7 +416,7 @@
               <button id="btnUnlockAllSlots" class="btn btn-secondary btn-sm" type="button" title="Unlocks all 5 career garage slots on any save">
                 Enable All 5 Slots
               </button>
-              <span class="help-tip" tabindex="0" data-tooltip="Manage 5 career vehicles (or Slots 6–10 via GARAGE.DAT). Toggle all 9 Outrun Uniques per car, apply conflict-free Stage 3 tuning, set Dyno ECU/Turbo curves, or inject 40+ presets.">?</span>
+              <button type="button" class="help-tip" data-tooltip="Manage 5 career vehicles (or Slots 6–10 via GARAGE.DAT). Toggle all 9 Outrun Uniques per car, apply conflict-free Stage 3 tuning, set Dyno ECU/Turbo curves, or inject 40+ presets." aria-label="Help: Manage 5 career vehicles (or Slots 6–10 via GARAGE.DAT). Toggle all 9 Outrun Uniques per car, apply conflict-free Stage 3 tuning, set Dyno ECU/Turbo curves, or inject 40+ presets.">?</button>
             </div>
           </div>
 
@@ -422,64 +438,72 @@
               <h2>Safe Career Add-ons</h2>
               <span class="mode-pill pill-safe">KEEPS RACES</span>
             </div>
-            <span class="help-tip" tabindex="0" data-tooltip="Unlocks all 420-byte per-car part tables (Body, Vinyls, Specialties), 25 Car Lot vehicles, and hidden map shops while keeping your active storyline races intact.">?</span>
+            <button type="button" class="help-tip" data-tooltip="Per-car part unlock tables (body, specialities, graphics), perf parts marked as owned and shops discovered for your current stage. Career stage and races are not changed." aria-label="Help: Per-car part unlock tables (body, specialities, graphics), perf parts marked as owned and shops discovered for your current stage. Career stage and races are not changed.">?</button>
           </div>
           <div class="card-body">
             <p class="panel-intro">
               Enhance your current career without skipping storyline races or boss progression:
             </p>
             <div class="unlock-grid">
-              <button type="button" class="btn btn-unlock-cat" data-unlock-cat="SPECIAL_UNIQUE">
-                <span class="cat-name">Special Parts</span>
-                <span class="cat-sub">Body, Hoods &amp; Vinyls</span>
+              <button type="button" class="btn btn-unlock-cat" data-unlock-cat="UNLOCK_GRAPHICS" title="Unlocks only the graphics table of every car in this garage: vinyls, decals and paint. Body kits, rims and progression stay as they are.">
+                <span class="cat-name">Vinyls &amp; Decals</span>
+                <span class="cat-sub">Graphics only</span>
               </button>
-              <button type="button" class="btn btn-unlock-cat" data-unlock-cat="CAR_LOT_ALL">
-                <span class="cat-name">Car Lots</span>
-                <span class="cat-sub">Unlock Catalog Table</span>
+              <button type="button" class="btn btn-unlock-cat" data-unlock-cat="UNLOCK_BODY" title="Unlocks the body-parts table of every car in this garage (kits, spoilers, hoods, rims and similar).">
+                <span class="cat-name">Body Parts</span>
+                <span class="cat-sub">Kits, spoilers, hoods, rims</span>
               </button>
-              <button type="button" class="btn btn-unlock-cat" data-unlock-cat="HIDDEN_SHOPS">
-                <span class="cat-name">Reveal Shops</span>
-                <span class="cat-sub">All Map Shop Icons</span>
+              <button type="button" class="btn btn-unlock-cat" data-unlock-cat="UNLOCK_SPECIALITIES" title="Unlocks the specialties table of every car in this garage (neon, doors, audio, hydraulics and similar).">
+                <span class="cat-name">Specialties</span>
+                <span class="cat-sub">Neon, doors, audio</span>
               </button>
               <button type="button" class="btn btn-unlock-cat" data-unlock-cat="SHOP_PARTS_ALL">
-                <span class="cat-name">Lvl 3 Perf Tiers</span>
-                <span class="cat-sub">Stage 3 &amp; Shop Unlocks</span>
+                <span class="cat-name">Own Perf Parts</span>
+                <span class="cat-sub">All slots · shop ownership</span>
+              </button>
+              <button type="button" class="btn btn-unlock-cat unlock-wide" data-unlock-cat="HIDDEN_SHOPS" title="Marks every shop your current career stage allows as discovered, the same way the game does when you drive past it. Shops of later stages stay hidden; races and stage are not changed.">
+                <span class="cat-name">Reveal Shops</span>
+                <span class="cat-sub">All shops of your stage</span>
+              </button>
+              <button type="button" class="btn btn-unlock-cat hidden" data-unlock-cat="CAR_LOT_ALL" hidden title="Removed: tested in game, it opened no dealer cars. Dealer cars open as you win career events.">
+                <span class="cat-name">Car Lots</span>
+                <span class="cat-sub">Removed</span>
               </button>
             </div>
 
-            <button id="btnUnlockAllParts" class="btn btn-amber-outline btn-block mt-md" type="button">
+            <button id="btnUnlockAllParts" class="btn btn-amber-outline btn-block mt-md hidden" type="button" hidden>
               Unlock All Safe Add-ons Together
             </button>
           </div>
         </div>
 
-        <!-- Mode 2: 100% Sandbox Mode -->
+        <!-- Mode 2: 100% Career -->
         <div class="card flex-fill">
           <div class="card-header">
             <div class="header-title-row">
-              <h2>100% Sandbox Mode</h2>
-              <span class="mode-pill pill-sandbox">ALL 5 SLOTS</span>
+              <h2>100% Career</h2>
+              <span class="mode-pill pill-sandbox">STAGE 6</span>
             </div>
-            <span class="help-tip" tabindex="0" data-tooltip="Applies the verified 100% completed career progression state (Stage 5, all 5 sponsor garage slots, full city map, and 100% of shop parts) while keeping your profile name, cash, and existing garage cars.">?</span>
+            <button type="button" class="help-tip" data-tooltip="Merges career progress from a 100% reference save into yours: all stages and career events completed (stage 6), all 5 garage slots unlocked, part unlock tables filled, cash raised to at least $777,777. Your name, cars and their tuning are kept." aria-label="Help: Merges career progress from a 100% reference save into yours: all stages and career events completed (stage 6), all 5 garage slots unlocked, part unlock tables filled, cash raised to at least $777,777. Your name, cars and their tuning are kept.">?</button>
           </div>
           <div class="card-body sandbox-body">
             <div class="sandbox-feature-list">
               <p class="panel-intro">
-                Convert your save into a complete <strong>Stage 5 Sandbox</strong> while keeping your profile name, bank cash, and existing garage vehicles:
+                Mark your career as <strong>100% complete (stage 6)</strong> while keeping your profile name and your own garage cars:
               </p>
               <ul class="feature-bullets">
                 <li>Unlocks all <strong>5 Sponsor Garage Slots</strong> in career</li>
-                <li>Opens the entire Bayview city map (Stages 1–5)</li>
-                <li>Unlocks 100% of Body, Performance &amp; Specialty shop parts</li>
-                <li>Applies <strong>Stage 3 + All 9 Outrun Uniques</strong> to occupied cars</li>
+                <li>Completes all stages and career events (merged from a 100% reference save)</li>
+                <li>Fills the per-car body, speciality &amp; graphics unlock tables</li>
+                <li>Raises cash to at least <strong>$777,777</strong> (never lowers it)</li>
               </ul>
               <div class="sandbox-note">
-                Note: Because this sets the storyline to 100% completed, story campaign races on the map are marked as finished. Want 0% races instead? Click <strong> Starter 0% + Unlocked</strong> in the top bar!
+                Note: story races are marked as finished, so they disappear from the map. Dealer cars open because the events are won. Your cars, tuning, SMS and settings are not changed.
               </div>
             </div>
 
             <button id="btnMasterUnlock100" class="btn btn-primary btn-block btn-lg" type="button">
-              Apply 100% Complete World
+              Apply 100% Career
             </button>
           </div>
         </div>
@@ -524,16 +548,16 @@
             </article>
             <article class="faq-col">
               <h3>4. Safe Career Add-ons vs. 100% Save Game Unlock</h3>
-              <p><strong>Safe Career Add-ons</strong> unlock per-car 420-byte part tables, all 25 Car Lot vehicles, and hidden shop map icons while keeping your active storyline races intact.Want a 0% career start with everything unlocked? Click <strong> Starter 0% + Unlocked</strong> in the top bar!</p>
+              <p><strong>Safe Career Add-ons</strong> fill the per-car part unlock tables and mark perf parts as owned without changing your career stage or races (Reveal Shops opens every shop your stage allows). <strong>100% Career</strong> instead completes every stage and event (stage 6), keeps your cars and name, and raises cash to at least $777,777.</p>
             </article>
             <article class="faq-col">
               <h3>5. How Outrun Unique Parts &amp; Widebody Kits Work</h3>
-              <p>In Career mode, TJ's 9 Outrun Unique performance upgrades (<code>WT, TR, NO, EN, TU, SU, BR, EC, TI</code>) and Widebody kits are stored <strong>inside each vehicle slot</strong> rather than on permanent shop shelves. Use the <strong>&#127942; Outrun Uniques</strong> toggles inside any slot card to install all 9 Uniques directly onto your car!</p>
+              <p>In Career mode, TJ's 9 Outrun Unique performance upgrades (Weight, Trans, NOS, Engine, Turbo, Susp, Brakes, ECU, Tires) and Widebody kits are stored <strong>inside each vehicle slot</strong> rather than on permanent shop shelves. Use the <strong>&#127942; Outrun Uniques</strong> toggles inside any slot card to install all 9 Uniques directly onto your car!</p>
             <p class="faq-more"><a href="guides/nfsu2-outrun-unique-parts/">Read the Outrun Unique parts guide &rarr;</a></p>
             </article>
             <article class="faq-col">
               <h3>6. How to Unlock All 5 Garage Slots in Career Mode</h3>
-              <p>Click <strong>Enable All 5 Slots</strong> in the Career Garage header. In v1.1, this clears the per-slot lock byte (<code>+0x428</code>), copies valid slot headers, and updates the global garage counter (<code>0xA175</code>) so all 5 slots work immediately even on Stage 1 saves.</p>
+              <p>Click <strong>Enable All 5 Slots</strong> in the Career Garage header. It clears the lock byte (<code>+0x428</code>) of each locked slot, the same change the game makes when you earn a slot, so all 5 slots work even on Stage 1 saves. Your career stage and races are not changed.</p>
             <p class="faq-more"><a href="guides/nfsu2-garage-dat-editor/">Read the GARAGE.DAT &amp; garage slots guide &rarr;</a></p>
             </article>
             <article class="faq-col">
@@ -560,7 +584,7 @@
             </article>
             <article class="faq-col">
               <h3>12. Automatic Header CRC-32 Recalculation</h3>
-              <p>Every downloaded save file automatically recalculates all three MSB-first CRC-32 checksums (Block A at <code>0x10</code>, Block B at <code>0x14</code>, and Header at <code>0x18</code>) to prevent "damaged or corrupted save" warnings in-game.</p>
+              <p>Every downloaded save file automatically recalculates all three MSB-first CRC-32 checksums (Block A at <code>0x10</code>, Block B at <code>0x14</code>, and Header at <code>0x18</code>) . Checksums of the loaded file are verified and a warning is shown if the original was already damaged.</p>
             </article>
           </div>
         </div>
@@ -568,6 +592,21 @@
     </footer>
 
     <!-- Toast Notification Container -->
+    <!-- Download summary: what changed and which files will be saved -->
+    <dialog id="downloadSummaryDialog" class="summary-dialog" aria-labelledby="downloadSummaryTitle">
+      <form method="dialog" class="summary-form">
+        <h2 id="downloadSummaryTitle">Ready to download</h2>
+        <p class="summary-sub">Changes compared to the file you loaded:</p>
+        <ul id="downloadSummaryList" class="summary-list"></ul>
+        <p class="summary-sub">Files:</p>
+        <ul id="downloadSummaryFiles" class="summary-files"></ul>
+        <div class="summary-actions">
+          <button type="submit" value="cancel" class="btn btn-ghost">Cancel</button>
+          <button type="submit" value="ok" id="btnConfirmDownload" class="btn btn-primary">Download</button>
+        </div>
+      </form>
+    </dialog>
+
     <div id="toastContainer" class="toast-container" aria-live="polite"></div>
   </div>
 

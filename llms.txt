@@ -1,0 +1,19 @@
+# NFSU2 Save Editor
+
+> Free browser-based save editor for Need for Speed: Underground 2 (PC career saves, 54,966-byte "20CM" files, nfsu2.xyz .zip backups and GARAGE.DAT slots 6–10). Files are edited locally in the browser and never uploaded.
+
+What it can do: set career cash and driver name; unlock and manage the five career garage slots; put story, rival or stock cars into any slot; move cars between slots 1–5 and GARAGE.DAT slots 6–10; set performance level, all 9 Outrun Unique parts and dyno presets per car; unlock vinyls & decals, body parts or specialties tables; complete the career (100 %, stage 6) while keeping your own cars; undo any change; see the real game-completion percentage. Checksums and the GARAGE.DAT fingerprint are recalculated on download.
+
+## Editor
+
+- [NFSU2 Save Editor](https://nfsu2.divon.eu/): load a save, .zip backup or GARAGE.DAT, edit, then download
+
+## Guides
+
+- [All NFSU2 guides](https://nfsu2.divon.eu/guides/): index of the step-by-step guides
+- [Save file location](https://nfsu2.divon.eu/guides/nfsu2-save-file-location/): where NFSU2 keeps career saves on Windows and how to export/restore nfsu2.xyz backups
+- [Money trainer](https://nfsu2.divon.eu/guides/nfsu2-money-trainer/): set any career cash amount without memory trainers
+- [Rachel's 350Z and boss cars](https://nfsu2.divon.eu/guides/rachel-350z-nfsu2/): drive story and sponsor cars in career mode
+- [Outrun Unique parts](https://nfsu2.divon.eu/guides/nfsu2-outrun-unique-parts/): install all 9 unique performance upgrades per car
+- [GARAGE.DAT slots 6–10](https://nfsu2.divon.eu/guides/nfsu2-garage-dat-editor/): edit the extended garage used by nfsu2.xyz
+- [PC cheat codes](https://nfsu2.divon.eu/guides/nfsu2-cheat-codes-pc/): title-screen codes for cash and unlocks
