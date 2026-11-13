@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFSU2 Save Not Loading or Corrupted? How to Fix It</title>
+  <meta name="description" content="NFS Underground 2 profile missing, save damaged, slots 6–10 gone or a GARAGE.OLD file? The usual causes and how to fix each of them." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://nfsu2.divon.eu/guides/nfsu2-save-not-loading-fix/" />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#151a23" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="NFSU2 Save Editor" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://nfsu2.divon.eu/guides/nfsu2-save-not-loading-fix/" />
+  <meta property="og:title" content="NFSU2 Save Not Loading or Corrupted? How to Fix It" />
+  <meta property="og:description" content="NFS Underground 2 profile missing, save damaged, slots 6–10 gone or a GARAGE.OLD file? The usual causes and how to fix each of them." />
+  <meta property="og:image" content="https://nfsu2.divon.eu/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NFSU2 Save Not Loading or Corrupted? How to Fix It" />
+  <meta name="twitter:description" content="NFS Underground 2 profile missing, save damaged, slots 6–10 gone or a GARAGE.OLD file? The usual causes and how to fix each of them." />
+  <meta name="twitter:image" content="https://nfsu2.divon.eu/assets/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "NFSU2 Save Not Loading or Corrupted? How to Fix It",
+    "description": "NFS Underground 2 profile missing, save damaged, slots 6–10 gone or a GARAGE.OLD file? The usual causes and how to fix each of them.",
+    "image": "https://nfsu2.divon.eu/assets/og-image.png",
+    "datePublished": "2026-11-13",
+    "dateModified": "2026-11-13",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Starladdey (cybergod_)",
+      "url": "https://github.com/Starladdey/nfsu2-save-editor"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Starladdey (cybergod_)",
+      "url": "https://github.com/Starladdey/nfsu2-save-editor"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://nfsu2.divon.eu/guides/nfsu2-save-not-loading-fix/"
+    },
+    "isPartOf": {
+      "@id": "https://nfsu2.divon.eu/#website"
+    },
+    "about": {
+      "@type": "VideoGame",
+      "name": "Need for Speed: Underground 2",
+      "alternateName": [
+        "NFSU2",
+        "NFS Underground 2"
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Electronic Arts"
+      }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Editor",
+        "item": "https://nfsu2.divon.eu/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://nfsu2.divon.eu/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Save not loading",
+        "item": "https://nfsu2.divon.eu/guides/nfsu2-save-not-loading-fix/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does my edited save not show up in the game?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most often the downloaded file got a different name, like \"DEMO (1)\". The file must have exactly the same name as its profile folder."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is GARAGE.OLD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The game renames GARAGE.DAT to GARAGE.OLD when it no longer matches the career save. Rename it back and re-link it with the editor to get slots 6–10 back."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the editor repair a damaged save?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It rewrites all three checksums on download, which fixes saves broken by tools that did not update them. A file with a wrong size or header cannot be loaded."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/landing.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="/" title="NFSU2 Save Editor">
+        <div class="brand-badge">NFSU2</div>
+        <div class="brand-text">
+          <span class="brand-title">NFSU2 SAVE EDITOR</span>
+          <span class="subtitle">Need for Speed Underground 2 · Online Save Editor</span>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a class="btn btn-ghost btn-sm" href="/guides/">Guides</a>
+        <a class="btn btn-primary btn-sm" href="/">Open Editor</a>
+      </nav>
+    </header>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Editor</a> <span class="sep">/</span> <a href="/guides/">Guides</a> <span class="sep">/</span> <span aria-current="page">Save not loading</span></nav>
+
+    <main id="main"><article class="article">
+      <h1>NFSU2 Save Not Loading or Corrupted? How to Fix It</h1>
+      <p class="meta">Updated <time datetime="2026-11-13">November 13, 2026</time> · by Starladdey</p>
+      <p class="lead">Most "my save doesn't load" problems in Need for Speed Underground 2 come down to a handful of causes: a wrong file name, broken checksums or a GARAGE.DAT that no longer matches the save. Find your symptom below.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-lg" href="/">Open the NFSU2 Save Editor</a>
+        <a class="btn btn-ghost btn-lg" href="/guides/">All guides</a>
+      </div>
+
+      <h2>Quick checklist</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>What you see</th><th>Likely cause</th><th>Fix</th></tr></thead>
+  <tbody>
+    <tr><td>The profile does not show up in the game</td><td>The file name is not exactly the folder name, e.g. <code>DEMO (1)</code> from a browser download</td><td>Rename the file to the folder name: <code>DEMO\DEMO</code></td></tr>
+    <tr><td>The game says the save is damaged</td><td>The file was changed without fixing its checksums (hand edit, old tool)</td><td>Load it in the editor and download it again: all three checksums are rewritten</td></tr>
+    <tr><td>Slots 6–10 are gone and a <code>GARAGE.OLD</code> file appeared</td><td><code>GARAGE.DAT</code> no longer matches the career save</td><td>See <a href="#garage-old">Slots 6–10 disappeared</a> below</td></tr>
+    <tr><td>A car has no wheels or bumpers</td><td>Damaged by an older editor version</td><td>Put the same car back from the Factory Stock list (see below)</td></tr>
+    <tr><td>No save folder at <code>%LOCALAPPDATA%</code></td><td>Some portable or repacked versions keep saves elsewhere</td><td>Search your drive for a folder named after your profile with a 54,966-byte file inside</td></tr>
+    <tr><td>Restored on nfsu2.xyz, nothing changed</td><td>A single file was restored instead of the archive</td><td>Restore the downloaded <code>.zip</code>; GARAGE.DAT only comes back inside the archive</td></tr>
+  </tbody>
+</table></div>
+
+      <h2>Where the save must be</h2>
+<p>Every profile lives in its own folder in <code>%LOCALAPPDATA%\NFS Underground 2</code>, and the save file inside has <strong>exactly</strong> the same name as the folder. The game ignores anything else. Details and screenshots: <a href="/guides/nfsu2-save-file-location/">save file location guide</a>.</p>
+
+      <h2>Damaged save (checksums)</h2>
+<p>An NFSU2 career save carries three CRC-32 checksums in its header. If a tool changes the file and does not update them, the game may refuse it. The editor checks the checksums when you load a file (the badge shows <strong>CRC WARN</strong> when they are off) and rewrites all three when you download. Saves written by the PC game itself can show a warning for one block; that is normal and fixed on download too.</p>
+
+      <h2 id="garage-old">Slots 6–10 disappeared (GARAGE.OLD)</h2>
+<p><code>GARAGE.DAT</code> (slots 6–10, used by nfsu2.xyz and the Extra Options mod) stores a fingerprint of your career save. When the save changes and GARAGE.DAT is not updated, the game renames it to <code>GARAGE.OLD</code> and the extra slots vanish. The editor re-links GARAGE.DAT to the save automatically, so this does not happen with files saved by it.</p>
+<ol class="steps">
+  <li>Copy your profile folder somewhere safe.</li>
+  <li>Rename <code>GARAGE.OLD</code> back to <code>GARAGE.DAT</code>.</li>
+  <li>Load the career save in the <a href="/">editor</a>, then load that <code>GARAGE.DAT</code> in the <strong>GARAGE.DAT (6–10)</strong> tab.</li>
+  <li>Download: you get the save and a GARAGE.DAT linked to it. Put both in the profile folder.</li>
+</ol>
+
+      <h2>A car without wheels or bumpers</h2>
+<p>Early versions of the editor could leave a car's visual parts half-written. Open the slot, choose the same car from <strong>Factory Stock Career Vehicles</strong> in the car list and download: the old visual data is cleared and the car is written fresh. Set its tuning again afterwards.</p>
+
+      <h2>Keep a way back</h2>
+<p>The editor never changes the file you load: it always saves a new one. The Windows app also copies the old file to <code>NFS Underground 2 Backups</code> before it overwrites anything. Still, copying the profile folder before any edit takes ten seconds and saves a lot of trouble.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq-list"><details class="faq-q"><summary>Why does my edited save not show up in the game?</summary><p>Most often the downloaded file got a different name, like &quot;DEMO (1)&quot;. The file must have exactly the same name as its profile folder.</p></details><details class="faq-q"><summary>What is GARAGE.OLD?</summary><p>The game renames GARAGE.DAT to GARAGE.OLD when it no longer matches the career save. Rename it back and re-link it with the editor to get slots 6–10 back.</p></details><details class="faq-q"><summary>Can the editor repair a damaged save?</summary><p>It rewrites all three checksums on download, which fixes saves broken by tools that did not update them. A file with a wrong size or header cannot be loaded.</p></details></div>
+
+      <h2>Related guides</h2>
+      <div class="related-grid"><a class="guide-card" href="/guides/nfsu2-save-file-location/"><span class="gc-title">Save file location</span><span class="gc-sub">Where NFSU2 stores career saves on Windows 10 / 11, and how to open the folder in seconds.</span></a><a class="guide-card" href="/guides/nfsu2-garage-dat-editor/"><span class="gc-title">GARAGE.DAT &amp; garage slots</span><span class="gc-sub">Enable all 5 career slots and edit extended 10-car garages stored in GARAGE.DAT.</span></a><a class="guide-card" href="/guides/nfsu2-100-percent-save/"><span class="gc-title">100% save</span><span class="gc-sub">Finish the career (stage 6, 224/224 events) and keep your own cars, name and tuning.</span></a></div>
+
+      <div class="final-cta">
+        <div class="final-title">Ready to edit your NFSU2 save?</div>
+        <p>Free, runs in your browser, and your save file never leaves your computer.</p>
+        <div class="cta-row"><a class="btn btn-primary btn-lg" href="/">Open the NFSU2 Save Editor</a></div>
+      </div>
+    </article></main>
+
+    <footer class="site-footer">
+      <span><strong>UNOFFICIAL FAN PROJECT:</strong> Created by <a href="https://github.com/Starladdey/nfsu2-save-editor" target="_blank" rel="noopener" class="link-amber">Starladdey (cybergod_)</a>. Non-commercial community utility. Not affiliated with Electronic Arts Inc. (EA).</span>
+      <span class="footer-pills">
+        <a href="/" class="privacy-pill pill-blue">&#127968; Editor</a>
+        <a href="/guides/" class="privacy-pill pill-neutral">&#128218; Guides</a>
+        <a href="https://github.com/Starladdey/nfsu2-save-editor" target="_blank" rel="noopener" class="privacy-pill pill-neutral">&#11088; GitHub</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>

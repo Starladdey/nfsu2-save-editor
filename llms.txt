@@ -17,3 +17,9 @@ What it can do: set career cash and driver name; unlock and manage the five care
 - [Outrun Unique parts](https://nfsu2.divon.eu/guides/nfsu2-outrun-unique-parts/): install all 9 unique performance upgrades per car
 - [GARAGE.DAT slots 6–10](https://nfsu2.divon.eu/guides/nfsu2-garage-dat-editor/): edit the extended garage used by nfsu2.xyz
 - [PC cheat codes](https://nfsu2.divon.eu/guides/nfsu2-cheat-codes-pc/): title-screen codes for cash and unlocks
+- [100% save](https://nfsu2.divon.eu/guides/nfsu2-100-percent-save/): finish the career on your own save and keep your cars
+- [Save not loading or corrupted](https://nfsu2.divon.eu/guides/nfsu2-save-not-loading-fix/): missing profile, damaged save, GARAGE.OLD and lost slots 6–10
+- [Unlock all cars](https://nfsu2.divon.eu/guides/nfsu2-unlock-all-cars/): how dealer cars unlock and how to put any car in your garage
+- [Hidden shops](https://nfsu2.divon.eu/guides/nfsu2-hidden-shops/): when the 22 shops open and how to reveal them
+- [Career stages and completion %](https://nfsu2.divon.eu/guides/nfsu2-career-stages-completion/): events, photos and shops per stage and how 100% is counted
+- [Unlock vinyls, body kits and specialties](https://nfsu2.divon.eu/guides/nfsu2-unlock-vinyls-body-kits/): unlock visual parts for every car without skipping races
