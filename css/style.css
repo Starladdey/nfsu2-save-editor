@@ -1693,3 +1693,6 @@ button.u-pill:disabled { cursor: not-allowed; }
 .sp-mark { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent-amber); }
 .stage-progress-row.done .sp-mark { color: var(--status-inuse-text); }
 .sp-note { color: var(--text-muted); font-size: 11px; }
+
+/* .exe update banner */
+.update-banner { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 16px; background: var(--accent-amber-dim); border-bottom: 1px solid var(--accent-amber-border); color: var(--text-primary); font-size: 13px; }

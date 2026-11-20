@@ -612,7 +612,7 @@
 
   <script src="js/app.bundle.min.js"></script>
   <script>
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator && !window.__TAURI__) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js').catch(() => {});
     });
